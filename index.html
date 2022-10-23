@@ -6,26 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+    <title>AdministrateYa - Inicio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
     <header>
-        <nav class="navbar">
-            <ul class="navbar-container">
-                <li class="navbar-container-item"><a href="#">Inicio</a></li>
-                <li class="navbar-container-item"><a href="">Gastos</a></li>
-                <li class="navbar-container-item"><a href="https://www.google.com.ar/">Salir</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <div class="text-left sm:text-left">
+                <a href="">Logo</a>
+            </div>
+            <nav class="navbar text-center sm:text-right">
+                <ul class="navbar-container">
+                    <li class="navbar-container-item"><a href="#">Inicio</a></li>
+                    <li class="navbar-container-item"><a href="">Gastos</a></li>
+                    <li class="navbar-container-item"><a href="https://www.google.com.ar/">Salir</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <main>
-        <h1>Hola, Brian!</h1>
+        <h1 class="welcome">Hola, Brian!</h1>
         <div class="Graphic">Gráfico a mostrar</div>
-        <h2>Epa! Intenta reducir tu consumo en -----.</h2>
-        <h2>Saldo: $10.000,00</h2>        
+        <h2 class="tip">Epa! Intenta reducir tu consumo en -----.</h2>
+        <h2 class="balance">Balance: $10.000,00</h2>        
     </main>
-    <footer>
+    <footer class="footer">
+        <button class="footer-button"><a href="">+</a></button>
+        <button class="footer-button"><a href="">H</a></button>
+        <button class="footer-button"><a href="">-</a></button>
     </footer>
     <script src="js/app.js"></script>
 </body>
