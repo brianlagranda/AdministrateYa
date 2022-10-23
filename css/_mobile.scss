@@ -1,0 +1,14 @@
+@import 'variables';
+
+@media only screen 
+  and (min-device-width: 320px)  {
+    body{
+        background-color: $primaryColor;
+        display: grid;
+    }
+
+    .navbar, .footer{
+      background-color: $secondaryColor;
+    }
+  }
+
