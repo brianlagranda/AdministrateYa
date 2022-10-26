@@ -1,5 +1,6 @@
+let balance = -0;
+let ingresos = 0;
 let dinero = 0;
-let balance = 0;
 let operacion = 0;
 let nombreUsuario = "";
 let luz = 0;
@@ -44,6 +45,7 @@ function solicitarIngreso(){
         let dinero = Number(prompt("Ingrese cantidad de dinero para aumentar su balance: "))
         while (dinero<0)
             dinero = Number(prompt("Ingrese cantidad mayor a 0 por favor :): "))
+        ingresos += dinero;
         USUARIO.balance += dinero;
     }
 
@@ -87,6 +89,8 @@ function bienvenida(){
 function mostrarResumen(){
     console.log(`Su Balance actual es: $ ${USUARIO.balance}`);
     console.log("--------------------------------------------");
+    console.log(`Sus ingresos totales: $ ${ingresos}`);
+    console.log("--------------------------------------------");
     console.log(`Sus gastos fueron los siguientes:`);
     console.log(`Luz: -$ ${luz}`);
     console.log(`Agua: -$ ${agua}`);
@@ -95,6 +99,7 @@ function mostrarResumen(){
     console.log(`Regalos: -$ ${regalos}`);
     console.log(`Transporte: -$ ${transporte}`);
     console.log(`Vehiculo: -$ ${vehiculo}`);
+
 }
 
 
