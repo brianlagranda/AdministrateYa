@@ -107,7 +107,7 @@ function mostrarResumen(){
 //                           //
 //     PROGRAMA PRINCIPAL    //
 //                           //
-solicitarNombre();
+// solicitarNombre();
 const USUARIO = new Usuario(1, nombreUsuario, balance);
 
 bienvenida();
@@ -127,3 +127,14 @@ while (operacion!=4){
         console.clear();
     }
 } 
+
+
+function captura(){
+    let formInputUsuario = document.getElementById("form-inputUsuario")
+    let inputUsuario = document.getElementById("inputUsuario");
+    let nombreUsuario = inputUsuario.value;
+    console.log(nombreUsuario);
+    formInputUsuario.style.display = "none";
+}
+
+
