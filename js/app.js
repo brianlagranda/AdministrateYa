@@ -1,8 +1,9 @@
+let nombreUsuario = "";
 let balance = -0;
 let ingresos = 0;
 let dinero = 0;
 let operacion = 0;
-let nombreUsuario = "";
+
 let luz = 0;
 let agua = 0;
 let gas = 0;
@@ -29,7 +30,7 @@ class Usuario{
 
 function solicitarNombre(){
     nombreUsuario = prompt("Ingrese su nombre de usuario: ");
-    while (nombreUsuario === null || nombreUsuario == "")
+    while (!isNaN(nombreUsuario) || nombreUsuario === null || nombreUsuario === "")
         nombreUsuario = prompt("Ingrese su nombre de usuario: ");
     return nombreUsuario;
 }
@@ -51,7 +52,7 @@ function solicitarIngreso(){
 
 function solicitarEgreso(){
         let dinero = Number(prompt("Ingrese cantidad de dinero mayor a 0: "))
-        while (dinero<0)
+        while (dinero<0 && isNaN(dinero))
             dinero = Number(prompt("Ingrese cantidad de dinero mayor a 0 por favor :): "))
         let gasto = Number(prompt("Ingrese a que categoria corresponde el gasto:\n1-Luz\n2-Agua\n3-Gas\n4-Entretenimiento\n5-Regalos\n6-Transporte\n7-Vehiculo"))
         while (gasto!=1 && gasto!=2 && gasto!=3 && gasto!=4 && gasto!=5 && gasto!=6 && gasto!=7 )
@@ -86,7 +87,7 @@ function bienvenida(){
     console.log(`Bienvenid@, ${USUARIO.nombre}`);
 }
 
-function mostrarResumen(){
+function mostrarBalance(){
     console.log(`Su Balance actual es: $ ${USUARIO.balance}`);
     console.log("--------------------------------------------");
     console.log(`Sus ingresos totales: $ ${ingresos}`);
@@ -107,34 +108,56 @@ function mostrarResumen(){
 //                           //
 //     PROGRAMA PRINCIPAL    //
 //                           //
-// solicitarNombre();
+solicitarNombre()
+
+let usuarios = ["BRIAN","LUCAS","JOSE"];
 const USUARIO = new Usuario(1, nombreUsuario, balance);
 
-bienvenida();
 
+if (usuarioEsta(nombreUsuario)){
+    bienvenida();
+}else{
+    agregarUsuario(usuarios, nombreUsuario);
+    bienvenida();
+}
+
+function agregarUsuario(usuarios, nombreUsuario){
+    if (usuarios.includes(nombreUsuario.toUpperCase()))
+    usuarios.push(nombreUsuario);
+}
+
+function usuarioEsta(nombreUsuario){
+    for (let i=0; i<usuarios.length; i++){
+        if (nombreUsuario.toUpperCase() == usuarios[i].toUpperCase())
+            return true;
+    }
+    return false;
+}
 // Al ingresar la operacion 4, se corta la ejecucion del programa.
-while (operacion!=4){
-    solicitarOperacion();
-    if (operacion==1){
-        mostrarResumen();
-    }
-    if (operacion==2){
-        solicitarIngreso();
-        console.clear();
-    }
-    if (operacion==3){
-        solicitarEgreso();
-        console.clear();
-    }
-} 
 
+    while (operacion!=4){
+        solicitarOperacion();
+        if (operacion==1){
+            console.clear();
+            mostrarBalance();
+        }
+        if (operacion==2){
+            solicitarIngreso();
+            console.clear();
+        }
+        if (operacion==3){
+            solicitarEgreso();
+            console.clear();
+        }
+    } 
 
-function captura(){
+/* function capturarNombreUsuario(){
     let formInputUsuario = document.getElementById("form-inputUsuario")
     let inputUsuario = document.getElementById("inputUsuario");
     let nombreUsuario = inputUsuario.value;
     console.log(nombreUsuario);
     formInputUsuario.style.display = "none";
-}
+    return nombreUsuario;
+} */
 
 
