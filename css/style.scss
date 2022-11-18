@@ -1,2 +1,4 @@
-@import '../node_modules/normalize.css/normalize.css';
+@import '_variables.scss';
+@import '_reset.scss';
 @import '_mobile.scss';
+@import '_desktop.scss';

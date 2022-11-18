@@ -1,12 +1,59 @@
-@import 'variables';
-
 @media only screen 
   and (min-device-width: 320px)  {
     body{
         background-color: $primaryColor;
     }
 
+    main{
+      display: flex;
+      gap: 20px;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    #bienvenidaUsuario{
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      padding: 5px;
+      margin: 25px 15px 0;
+      color: $textColor;
+      border: 2px solid $secondaryColor;
+      border-radius: 5px;
+      box-shadow: -9px 11px 5px 0px rgba(0,0,0,0.75);
+      background-color: $secondaryColor;
+    }
+
+    #gastosUsuario{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 300px;
+      width: 300px;
+      background-color: $secondaryColor;
+      color: $textColor;
+      font-size: 1rem;
+      border-radius: 100%;
+    }
+
+    #balanceUsuario{
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      align-self: center;
+      max-width: 70%;
+      color: $textColor;
+      font-size: 1.5rem;
+      border: 2px solid $secondaryColor;
+      border-radius: 5px;
+      box-shadow: -9px 11px 5px 0px rgba(0,0,0,0.75);
+      background-color: $secondaryColor;
+    }
+
     .navbar, .footer{
+      box-shadow: -5px 11px 5px 0px rgba(0,0,0,0.75);
       background-color: $secondaryColor;
     }
   }
