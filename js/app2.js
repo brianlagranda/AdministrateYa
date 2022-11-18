@@ -12,20 +12,7 @@ usuarios.push(new Usuario(1, "Brianasdasd", {Luz: -100, Agua: -200, Gas: -300, E
 usuarios.push(new Usuario(2, "Jorge",{Luz: -1100, Agua: -2200, Gas: -4300, Entretenimiento: -5400, Salidas: -1600, Mascota: -31000, Auto: -3200, Comida: -5700}, 30000))
 usuarios.push(new Usuario(3, "Miriam",{Luz: -5500, Agua: -3200, Gas: -5300, Entretenimiento: -5200, Salidas: -2600, Mascota: -5000, Auto: -4200, Comida: -8700}, -5000))
 
-console.log(usuarios);
-
 // VARIABLES INTERFAZ USUARIO
-
-let padre = document.getElementById("personas");
-
-let personas = ["HOMERO", "MARGE", "BART", "LISA", "MAGGIE"];
-
-
-// for (const persona of personas){
-//     let li = document.createElement("li");
-//     li.innerHTML = persona;
-//     padre.appendChild(li);
-// }
 
 const bienvenidaUsuario = document.getElementById("bienvenidaUsuario");
 const gastosUsuario = document.getElementById("gastosUsuario");
