@@ -1,3 +1,28 @@
+@media only screen 
+  and (min-device-width: 992px)  {
+
 body{
     background-color: $primaryColor;
+}
+
+main{
+    gap: 100px;
+    align-content: center;
+  }
+
+  #bienvenidaUsuario{
+    justify-content: center;
+    max-width: 50%;
+  }
+
+  #gastosUsuario{
+    height: 500px;
+    width: 500px;
+    margin: auto;
+  }
+
+  #balanceUsuario{
+    margin: auto;
+  }
+
 }

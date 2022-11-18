@@ -6,7 +6,7 @@
 
     main{
       display: flex;
-      gap: 20px;
+      gap: 50px;
       flex-direction: column;
       flex-wrap: wrap;
       justify-content: center;
@@ -17,7 +17,7 @@
       text-align: center;
       justify-content: center;
       padding: 5px;
-      margin: 25px 15px 0;
+      margin: 70px 15px 0;
       color: $textColor;
       border: 2px solid $secondaryColor;
       border-radius: 5px;
@@ -31,6 +31,7 @@
       justify-content: center;
       align-items: center;
       margin: 0px 10px;
+      margin: auto;
       height: 300px;
       width: 300px;
       background-color: $secondaryColor;
@@ -62,5 +63,36 @@
     .navbar-brand{
       color: $textColor;
     }
+
+    #buttons{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      font-size: 80px;
+      color: $textColor;
+    }
+
+    #agregarGasto{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $secondaryColor;
+      height: 100px;
+      width: 100px;
+      border-radius: 100%;
+      text-align: center;
+    }
+
+    #agregarIngreso{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $secondaryColor;
+      height: 100px;
+      width: 100px;
+      border-radius: 100%;
+      text-align: center;
+    }
+
   }
 
