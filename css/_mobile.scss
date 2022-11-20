@@ -1,12 +1,14 @@
 @media only screen 
   and (min-device-width: 320px)  {
     body{
-        background-color: $primaryColor;
+        background-image: $backgroundColor;
+        height: 100vh;
+        width: 100vw;
     }
 
     main{
       display: flex;
-      gap: 50px;
+      gap: 5vh;
       flex-direction: column;
       flex-wrap: wrap;
       justify-content: center;
@@ -17,7 +19,7 @@
       text-align: center;
       justify-content: center;
       padding: 5px;
-      margin: 70px 15px 0;
+      margin: 15px 15px 0;
       color: $textColor;
       border: 2px solid $secondaryColor;
       border-radius: 5px;
@@ -68,31 +70,20 @@
       display: flex;
       flex-direction: row;
       justify-content: space-around;
-      font-size: 80px;
-      color: $textColor;
+      font-size: 50px;
     }
 
-    #agregarGasto{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: $secondaryColor;
-      height: 100px;
-      width: 100px;
-      border-radius: 100%;
-      text-align: center;
-    }
+    .button{
+      border: none;
+      background: none;
+      cursor: pointer;
+      height: 50px;
+      width: 50px;
+      top: 10vh;
 
-    #agregarIngreso{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: $secondaryColor;
-      height: 100px;
-      width: 100px;
-      border-radius: 100%;
-      text-align: center;
+      & i{
+        color: $secondaryColor;
+      }
     }
-
   }
 
