@@ -8,6 +8,7 @@ main{
 
   #bienvenidaUsuario{
     justify-content: center;
+    margin: 15px auto;
     max-width: 50%;
   }
 
@@ -15,9 +16,22 @@ main{
     height: 500px;
     width: 500px;
     margin: auto;
+    font-size: 24px;
+    gap: 5px;
+    border: 1px solid $primaryColor;
+  }
+
+  .gastos{
+    border: 1px solid $primaryColor;
+    background-color: $primaryColor;
+    border-radius: 10px;
+    padding: 5px;
   }
 
   #balanceUsuario{
+    height: 50px;
+    width: 20%;
+    font-size: 2rem;
     margin: auto;
   }
 

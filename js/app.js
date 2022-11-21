@@ -17,6 +17,9 @@ usuarios.push(new Usuario(3, "Miriam",{Luz: -5500, Agua: -3200, Gas: -5300, Entr
 const bienvenidaUsuario = document.getElementById("bienvenidaUsuario");
 const gastosUsuario = document.getElementById("gastosUsuario");
 const balanceUsuario = document.getElementById("balanceUsuario");
+const btnMinus = document.getElementById("btn-minus");
+const btnPlus = document.getElementById("btn-plus");
+
 
 function bienvenida(usuario){
     bienvenidaUsuario.innerHTML = `
@@ -29,9 +32,11 @@ function bienvenida(usuario){
 }
 
 function mostrarGastos(usuario){
-        for (const gasto in usuario.gastos){
+    let gastos = usuario.gastos
+    for (const gasto in gastos){
             let div = document.createElement("div");
-            div.innerHTML = gasto;
+            div.className = "gastos";
+            div.innerHTML = `${gasto}: ${gastos[gasto]}`;
             gastosUsuario.appendChild(div);
     }
 }
@@ -42,6 +47,10 @@ function mostrarBalance(usuario){
                                 <span>$${usuario.balance}</span>
     
                             `
+}
+
+function agregarIngreso(){
+    
 }
 
 
