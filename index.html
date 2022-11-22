@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +15,9 @@
     crossorigin="anonymous"></script>
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/ceaba162bd.js" crossorigin="anonymous"></script>
+    <!-- SweetAlert2 -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
     <title>AdministrateYa - Inicio</title>
   </head>
   
@@ -51,7 +54,7 @@
         <div id="balanceUsuario"></div>
         <div id="buttons">
           <button id="btn-minus" class="button"><i class="fa-solid fa-circle-minus"></i></button>
-          <button id="btn-plus" class="button"><i class="fa-solid fa-circle-plus"></i></button>
+          <button onclick="agregarIngreso()" id="btn-plus" class="button"><i class="fa-solid fa-circle-plus"></i></button>
         </div>
       </main>
     <footer class="footer">

@@ -49,8 +49,27 @@ function mostrarBalance(usuario){
                             `
 }
 
-function agregarIngreso(){
-    
+function agregarIngreso(usuario){
+    (async () => {
+
+        const { value: dinero } = await Swal.fire({
+          title: 'Aumentar balance',
+          input: 'number',
+          inputLabel: 'Dinero',
+          inputPlaceholder: 'Ingresa dinero',
+          inputAttributes: {
+            maxlength: 10,
+            autocapitalize: 'off',
+            autocorrect: 'off'
+          }
+        })
+        
+        if (dinero) {
+            usuario.balance += dinero;
+            Swal.fire(`Balance actual: ${usuario.balance}`)
+        }
+        
+        })()
 }
 
 
@@ -98,6 +117,6 @@ function capturarNombreUsuario(){
 
 
 elegirUsuario();
-bienvenida(usuarios[0]);
-mostrarGastos(usuarios[0]);
-mostrarBalance(usuarios[0]);
+bienvenida(usuarios[2]);
+mostrarGastos(usuarios[2]);
+mostrarBalance(usuarios[2]);

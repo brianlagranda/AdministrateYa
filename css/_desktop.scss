@@ -1,6 +1,10 @@
 @media only screen 
   and (min-device-width: 992px)  {
 
+body{
+  overflow: hidden;
+}
+
 main{
     gap: 50px;
     align-content: center;
