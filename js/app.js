@@ -20,6 +20,41 @@ const balanceUsuario = document.getElementById("balanceUsuario");
 const btnMinus = document.getElementById("btn-minus");
 const btnPlus = document.getElementById("btn-plus");
 
+let usuarioActual = elegirUsuario();
+
+function elegirUsuario(){
+    (async () =>{
+
+        const { value: nombreUsuario } = await Swal.fire({
+          title: 'Login usuario',
+          input: 'text',
+          inputLabel: 'Usuarios: Brianasdasd, Jorge, Miriam.',
+          inputPlaceholder: 'Ingresa tu nombre de usuario',
+          inputAttributes: {
+            autocapitalize: 'off'
+          },
+          showCancelButton: false,
+          confirmButtonText: 'Log In'
+       })
+
+        // Si el usuario no es válido, vuelvo a pedir el nombre de usuario.
+        // Retorno: usuarioActual.
+
+        if(!usuarioValido(nombreUsuario))
+            elegirUsuario();
+        else{
+            usuarioActual = nombreUsuario;
+            console.log(usuarioActual);
+            return usuarioActual;  
+        }
+    })()
+}
+
+
+
+function usuarioValido(nombreUsuario){
+    return usuarios.find(usuario => usuario.nombre == nombreUsuario)
+}
 
 function bienvenida(usuario){
     bienvenidaUsuario.innerHTML = `
@@ -49,7 +84,9 @@ function mostrarBalance(usuario){
                             `
 }
 
-function agregarIngreso(usuario){
+// FUNCIONALIDAD BOTÓN + PARA AGREGAR SALDO AL BALANCE.
+
+btnPlus.addEventListener('click', function(){
     (async () => {
 
         const { value: dinero } = await Swal.fire({
@@ -65,12 +102,13 @@ function agregarIngreso(usuario){
         })
         
         if (dinero) {
-            usuario.balance += dinero;
+            console.log(usuario.balance);
+            usuario.balance += Number(dinero);
             Swal.fire(`Balance actual: ${usuario.balance}`)
         }
         
         })()
-}
+});
 
 
 
@@ -96,11 +134,6 @@ function agregarIngreso(usuario){
 
 
 
-
-function elegirUsuario(nombreUsuario){
-    let user = usuarios.find(usuario => usuario.nombre == nombreUsuario)
-    console.log(user);
-}
 
 function renderUsuarios(){
     container.innerHTML = usuarios.map(user => `<h3>${user.nombre}</h3>`)
