@@ -82,11 +82,34 @@ function renderBalance(){
 
 // FUNCIONALIDAD BOTÓN + PARA AGREGAR SALDO AL BALANCE.
 
-btnPlus.addEventListener('click', function(){
+btnPlus.addEventListener('click', ()=>{
     (async () => {
 
         const { value: dinero } = await Swal.fire({
           title: 'Aumentar balance',
+          input: 'number',
+          inputPlaceholder: 'Ingresa suma de dinero',
+          inputAttributes: {
+            maxlength: 10,
+            autocapitalize: 'off',
+            autocorrect: 'off'
+          }
+        })
+        
+        if (dinero>=0) {
+            usuarioActual.balance += Number(dinero);
+            renderBalance(usuarioActual);
+            Swal.fire(`Balance actual: ${usuarioActual.balance}`)
+        }
+        
+        })()
+});
+
+btnMinus.addEventListener('click', ()=>{
+    (async () => {
+
+        const { value: dinero } = await Swal.fire({
+          title: 'Ingresar gasto',
           input: 'number',
           inputLabel: 'Dinero',
           inputPlaceholder: 'Ingresa dinero',
@@ -105,10 +128,6 @@ btnPlus.addEventListener('click', function(){
         
         })()
 });
-
-function renderUsuarios(){
-    container.innerHTML = usuarios.map(user => `<h3>${user.nombre}</h3>`)
-}
 
 function main(){
     renderBienvenida(usuarioActual);

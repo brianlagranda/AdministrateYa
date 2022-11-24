@@ -1,13 +1,22 @@
 @media only screen 
   and (min-device-width: 992px)  {
 
-body{
-  overflow-x: hidden;
-}
+  body{
+    overflow-x: hidden;
+  }
 
-main{
-    gap: 50px;
-    align-content: center;
+  main{
+      gap: 50px;
+      align-content: center;
+    }
+
+  .nav-item, .nav-item2{
+    visibility: hidden;
+  }
+
+  #navbarNavDropdown{
+    margin-right: 50px;
+    flex-grow: 0;
   }
 
   #bienvenidaUsuario{
