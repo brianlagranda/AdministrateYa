@@ -24,22 +24,27 @@ let usuarioActual = elegirUsuario();
 
 function elegirUsuario(){
     (async () =>{
-
+        const inputOptions = new Promise((resolve) => {
+            setTimeout(() => {
+                resolve({
+                'Brian': 'Brian',
+                'Jorge': 'Jorge',
+                'Miriam': 'Miriam'
+                })
+            }, 1000)
+            })
+      
         const { value: nombreUsuario } = await Swal.fire({
-          title: 'Login usuario',
-          input: 'text',
-          inputLabel: 'Usuarios: Brian, Jorge, Miriam.',
-          inputPlaceholder: 'Ingresa tu nombre de usuario',
-          inputAttributes: {
-            autocapitalize: 'off'
-          },
-          showCancelButton: false,
-          confirmButtonText: 'Log In'
-       })
-
-        // Si el usuario no es válido, vuelvo a pedir el nombre de usuario.
-        // Retorno: usuarioActual.
-
+        title: 'Selecciona tu usuario',
+        input: 'radio',
+        inputOptions: inputOptions,
+        inputValidator: (value) => {
+            if (!value) {
+            return 'Necesitas seleccionar un usuario'
+            }
+        }
+        })
+      
         if (!usuarioValido(nombreUsuario))
             elegirUsuario();
         else
@@ -53,17 +58,14 @@ function usuarioValido(nombreUsuario){
 }
 
 function renderBienvenida(){
-    bienvenidaUsuario.innerHTML = `
-                                    
-                                    <h1>
-                                        Bienvenid@, ${usuarioActual.nombre}!
-                                    </h1>
-            
-                                `
+    let h1 = document.createElement("h1");
+    h1.className = "bienvenida";
+    h1.innerHTML = `Bienvenid@, ${usuarioActual.nombre}!`;
+    bienvenidaUsuario.appendChild(h1);
 }
 
 function renderGastos(){
-    let gastos = usuarioActual.gastos
+    let gastos = usuarioActual.gastos;
     for (const gasto in gastos){
             let div = document.createElement("div");
             div.className = "gastos";
@@ -73,11 +75,10 @@ function renderGastos(){
 }
 
 function renderBalance(){
-    balanceUsuario.innerHTML = `
-                                
-                                <span>$${usuarioActual.balance}</span>
-    
-                            `
+    let span = document.createElement("span");
+    span.className = "balance";
+    span.innerHTML = `Balance $${usuarioActual.balance}`;
+    balanceUsuario.appendChild(span);
 }
 
 // FUNCIONALIDAD BOTÓN + PARA AGREGAR SALDO AL BALANCE.
@@ -94,12 +95,12 @@ btnPlus.addEventListener('click', ()=>{
             autocapitalize: 'off',
             autocorrect: 'off'
           }
-        })
+        });
         
         if (dinero>=0) {
             usuarioActual.balance += Number(dinero);
             renderBalance(usuarioActual);
-            Swal.fire(`Balance actual: ${usuarioActual.balance}`)
+            Swal.fire(`Balance actual: ${usuarioActual.balance}`);
         }
         
         })()
@@ -123,7 +124,7 @@ btnMinus.addEventListener('click', ()=>{
         if (dinero) {
             usuarioActual.balance += Number(dinero);
             renderBalance(usuarioActual);
-            Swal.fire(`Balance actual: ${usuarioActual.balance}`)
+            Swal.fire(`Balance actual: ${usuarioActual.balance}`);
         }
         
         })()

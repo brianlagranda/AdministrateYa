@@ -1,62 +1,23 @@
 @media only screen 
-  and (min-device-width: 320px)  {
-    body{
-        background-image: $backgroundColor;
-        height: 100vh;
-        width: 100vw;
-    }
-
-    main{
-      display: flex;
-      gap: 5vh;
-      flex-direction: column;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .nav-link{
-      color: white;
-    }
-
-    .nav-link.active{
-      color: white !important;
-    }
+  and (min-device-width: 500px)  {
 
     #bienvenidaUsuario{
       display: flex;
       text-align: center;
       justify-content: center;
-      max-width: 50%;
-      padding: 5px;
-      margin: 0px auto;
-      margin-top: 50px;
-      color: $textColor;
-      border: 2px solid $secondaryColor;
-      border-radius: 5px;
-      box-shadow: -9px 11px 5px 0px rgba(0,0,0,0.75);
-      background-color: $secondaryColor;
     }
-    
+
     .bienvenida{
-      font-size: 1.5rem;
-      margin-bottom: -2px;
+      font-size: 2rem;
     }
 
     #gastosUsuario{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin: 0px 10px;
+      height: 500px;
+      width: 500px;
       margin: auto;
-      height: 300px;
-      width: 300px;
-      background-color: $secondaryColor;
-      color: $textColor;
-      font-size: 1rem;
-      box-shadow: -5px 11px 5px 0px rgba(0,0,0,0.75);
-      border-radius: 50%;
-      gap: 2px;
+      font-size: 1.8em;
+      gap: 5px;
+      border: 1px solid $primaryColor;
     }
 
     .gastos{
@@ -72,9 +33,9 @@
       justify-content: center;
       align-self: center;
       color: $textColor;
-      font-size: 1.5rem;
+      font-size: 2em;
       height: 100%;
-      width: 60%;
+      width: 40%;
       border: 2px solid $secondaryColor;
       border-radius: 5px;
       box-shadow: -9px 11px 5px 0px rgba(0,0,0,0.75);
