@@ -20,7 +20,11 @@ const balanceUsuario = document.getElementById("balanceUsuario");
 const btnMinus = document.getElementById("btn-minus");
 const btnPlus = document.getElementById("btn-plus");
 
+let gastoActual = "";
 let usuarioActual = elegirUsuario();
+
+
+// ALERTA CON OPCIONES PARA SELECCIONAR usuarioActual.
 
 function elegirUsuario(){
     (async () =>{
@@ -75,13 +79,14 @@ function renderGastos(){
 }
 
 function renderBalance(){
-    let span = document.createElement("span");
-    span.className = "balance";
-    span.innerHTML = `Balance $${usuarioActual.balance}`;
-    balanceUsuario.appendChild(span);
+    balanceUsuario.textContent = `
+
+                                    Balance $${usuarioActual.balance}
+                                    
+                                `;
 }
 
-// FUNCIONALIDAD BOTÓN + PARA AGREGAR SALDO AL BALANCE.
+// FUNCIONALIDAD BOTÓN (+) PARA AGREGAR SALDO AL BALANCE.
 
 btnPlus.addEventListener('click', ()=>{
     (async () => {
@@ -106,29 +111,65 @@ btnPlus.addEventListener('click', ()=>{
         })()
 });
 
-btnMinus.addEventListener('click', ()=>{
-    (async () => {
+// FUNCIONALIDAD BOTÓN (-) PARA DESCONTAR SALDO DEL BALANCE Y CATEGORIZAR EL GASTO.
 
+btnMinus.addEventListener('click', ()=>{
+    (async () =>{
         const { value: dinero } = await Swal.fire({
-          title: 'Ingresar gasto',
-          input: 'number',
-          inputLabel: 'Dinero',
-          inputPlaceholder: 'Ingresa dinero',
-          inputAttributes: {
-            maxlength: 10,
-            autocapitalize: 'off',
-            autocorrect: 'off'
+            title: 'Ingresar gasto',
+            input: 'number',
+            inputPlaceholder: 'Ingresa suma de dinero',
+            inputAttributes: {
+              maxlength: 10,
+              autocapitalize: 'off',
+              autocorrect: 'off'
+            }
+          });
+          
+          if (dinero>=0) {
+              usuarioActual.balance -= Number(dinero);
+              renderBalance(usuarioActual);
           }
-        })
-        
-        if (dinero) {
-            usuarioActual.balance += Number(dinero);
-            renderBalance(usuarioActual);
-            Swal.fire(`Balance actual: ${usuarioActual.balance}`);
+
+        const inputOptions = new Promise((resolve) => {
+            setTimeout(() => {
+                resolve({
+                'Luz': 'Luz',
+                'Agua': 'Agua',
+                'Gas': 'Gas',
+                'Entretenimiento': 'Entretenimiento',
+                'Salidas': 'Salidas',
+                'Mascota': 'Mascota',
+                'Auto': 'Auto',
+                'Comida': 'Comida'
+                })
+            }, 1000)
+            })
+      
+        const { value: gasto } = await Swal.fire({
+        title: 'Selecciona la categoría del gasto',
+        input: 'select',
+        inputOptions: inputOptions,
+        inputValidator: (value) => {
+            if (!value) {
+            return 'Necesitas seleccionar la categoria del gasto'
+            }
         }
-        
-        })()
+        })
+
+        // TODO: FALTA IMPLEMENTAR GASTO SEGUN CATEGORIZACION ELEGIDA.         
+
+    })()
 });
+
+// FALTA IMPLEMENTAR A QUE CATEGORIA VA EL GASTO
+
+function categorizar(gasto){
+    gasto = usuarios.find(usuario => usuario.nombre == nombreUsuario);
+    return usuarioActual;
+}
+
+// PROGRAMA PRINCIPAL DONDE SE RENDERIZA LA PANTALLA CON LOS DATOS DEL usuarioActual. 
 
 function main(){
     renderBienvenida(usuarioActual);
