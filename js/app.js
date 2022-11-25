@@ -165,8 +165,7 @@ btnMinus.addEventListener('click', ()=>{
 // FALTA IMPLEMENTAR A QUE CATEGORIA VA EL GASTO
 
 function categorizar(gasto){
-    gasto = usuarios.find(usuario => usuario.nombre == nombreUsuario);
-    return usuarioActual;
+    // TODO
 }
 
 // PROGRAMA PRINCIPAL DONDE SE RENDERIZA LA PANTALLA CON LOS DATOS DEL usuarioActual. 
