@@ -8,9 +8,23 @@ class Usuario{
 }
 
 const usuarios = [];
-usuarios.push(new Usuario(1, "Brian", {Luz: -100, Agua: -200, Gas: -300, Entretenimiento: -500, Salidas: -600, Mascota: -1000, Auto: -200, Comida: -700}, 24000))
+usuarios.push(new Usuario(1, "", {Luz: 0, Agua: 0, Gas: 0, Entretenimiento: 0, Salidas: 0, Mascota: -0, Auto: 0, Comida: 0}, 0))
 usuarios.push(new Usuario(2, "Jorge",{Luz: -1100, Agua: -2200, Gas: -4300, Entretenimiento: -5400, Salidas: -1600, Mascota: -31000, Auto: -3200, Comida: -5700}, 30000))
 usuarios.push(new Usuario(3, "Miriam",{Luz: -5500, Agua: -3200, Gas: -5300, Entretenimiento: -5200, Salidas: -2600, Mascota: -5000, Auto: -4200, Comida: -8700}, -5000))
+
+function 
+
+console.log(usuarios[0])
+
+// // Put the object into storage
+// localStorage.setItem('user', JSON.stringify(testObject));
+
+// // Retrieve the object from storage
+// var retrievedObject = localStorage.getItem('testObject');
+
+// console.log('retrievedObject: ', JSON.parse(retrievedObject));
+
+// 
 
 // VARIABLES INTERFAZ USUARIO
 
