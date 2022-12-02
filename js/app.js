@@ -7,7 +7,8 @@ class Usuario{
     }
 }
 
-const usuarios = [];
+let usuarios = [];
+
 usuarios.push(new Usuario(1, "Brian", {Luz: -100, Agua: -200, Gas: -300, Entretenimiento: -500, Salidas: -600, Mascota: -1000, Auto: -200, Comida: -700}, 24000))
 usuarios.push(new Usuario(2, "Jorge",{Luz: -1100, Agua: -2200, Gas: -4300, Entretenimiento: -5400, Salidas: -1600, Mascota: -31000, Auto: -3200, Comida: -5700}, 30000))
 usuarios.push(new Usuario(3, "Miriam",{Luz: -5500, Agua: -3200, Gas: -5300, Entretenimiento: -5200, Salidas: -2600, Mascota: -5000, Auto: -4200, Comida: -8700}, -5000))
@@ -36,27 +37,30 @@ function elegirUsuario(){
                 'Miriam': 'Miriam'
                 })
             }, 1000)
-            })
-      
+            });
+
         const { value: nombreUsuario } = await Swal.fire({
         title: 'Selecciona tu usuario',
         input: 'radio',
         inputOptions: inputOptions,
         inputValidator: (value) => {
             if (!value) {
-            return 'Necesitas seleccionar un usuario'
+            return 'Necesitas seleccionar un usuario';
             }
         }
-        })
-      
+        });
+
         if (!usuarioValido(nombreUsuario))
             elegirUsuario();
-        else
+        else{
             return main();
-    })()
+        }
+    })();
 }
 
 function usuarioValido(nombreUsuario){
+    if (localStorage.getItem("user"))
+        usuarios = JSON.parse(localStorage.getItem("user"));
     usuarioActual = usuarios.find(usuario => usuario.nombre == nombreUsuario);
     return usuarioActual;
 }
@@ -90,25 +94,25 @@ function renderBalance(){
 
 btnPlus.addEventListener('click', ()=>{
     (async () => {
-
         const { value: dinero } = await Swal.fire({
-          title: 'Aumentar balance',
-          input: 'number',
-          inputPlaceholder: 'Ingresa suma de dinero',
-          inputAttributes: {
-            maxlength: 10,
-            autocapitalize: 'off',
-            autocorrect: 'off'
-          }
+            title: 'Aumentar balance',
+            input: 'number',
+            inputPlaceholder: 'Ingresa suma de dinero',
+            inputAttributes: {
+                maxlength: 10,
+                autocapitalize: 'off',
+                autocorrect: 'off'
+            }
         });
         
         if (dinero>=0) {
             usuarioActual.balance += Number(dinero);
             renderBalance(usuarioActual);
+            localStorage.setItem("user", JSON.stringify(usuarios));
             Swal.fire(`Balance actual: ${usuarioActual.balance}`);
         }
         
-        })()
+    })();
 });
 
 // FUNCIONALIDAD BOTÓN (-) PARA DESCONTAR SALDO DEL BALANCE Y CATEGORIZAR EL GASTO.
@@ -120,45 +124,44 @@ btnMinus.addEventListener('click', ()=>{
             input: 'number',
             inputPlaceholder: 'Ingresa suma de dinero',
             inputAttributes: {
-              maxlength: 10,
-              autocapitalize: 'off',
-              autocorrect: 'off'
+                maxlength: 10,
+                autocapitalize: 'off',
+                autocorrect: 'off'
             }
-          });
-          
-          if (dinero>=0) {
-              usuarioActual.balance -= Number(dinero);
-              renderBalance(usuarioActual);
-          }
+        });
+        
+        if (dinero>=0) {
+            usuarioActual.balance -= Number(dinero);
+            renderBalance(usuarioActual);
+        }
 
         const inputOptions = new Promise((resolve) => {
             setTimeout(() => {
                 resolve({
-                'Luz': 'Luz',
-                'Agua': 'Agua',
-                'Gas': 'Gas',
-                'Entretenimiento': 'Entretenimiento',
-                'Salidas': 'Salidas',
-                'Mascota': 'Mascota',
-                'Auto': 'Auto',
-                'Comida': 'Comida'
+                    'Luz': 'Luz',
+                    'Agua': 'Agua',
+                    'Gas': 'Gas',
+                    'Entretenimiento': 'Entretenimiento',
+                    'Salidas': 'Salidas',
+                    'Mascota': 'Mascota',
+                    'Auto': 'Auto',
+                    'Comida': 'Comida'
                 })
             }, 1000)
-            })
-      
+            });
+
         const { value: gasto } = await Swal.fire({
         title: 'Selecciona la categoría del gasto',
         input: 'select',
         inputOptions: inputOptions,
         inputValidator: (value) => {
             if (!value) {
-            return 'Necesitas seleccionar la categoria del gasto'
+                return 'Necesitas seleccionar la categoria del gasto'
+            }else{
+                
             }
         }
-        })
-
-        // TODO: FALTA IMPLEMENTAR GASTO SEGUN CATEGORIZACION ELEGIDA.         
-
+        })        
     })()
 });
 
