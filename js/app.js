@@ -37,7 +37,7 @@ function elegirUsuario(){
                 'Miriam': 'Miriam'
                 })
             }, 1000)
-            });
+        });
 
         const { value: nombreUsuario } = await Swal.fire({
         title: 'Selecciona tu usuario',
@@ -49,18 +49,20 @@ function elegirUsuario(){
             }
         }
         });
-
+        
         if (!usuarioValido(nombreUsuario))
             elegirUsuario();
         else{
             return main();
         }
+
     })();
 }
 
 function usuarioValido(nombreUsuario){
-    if (localStorage.getItem("user"))
+    if (localStorage.getItem("user")){
         usuarios = JSON.parse(localStorage.getItem("user"));
+    };
     usuarioActual = usuarios.find(usuario => usuario.nombre == nombreUsuario);
     return usuarioActual;
 }
@@ -129,10 +131,9 @@ btnMinus.addEventListener('click', ()=>{
                 autocorrect: 'off'
             }
         });
-        
-        if (dinero>=0) {
-            usuarioActual.balance -= Number(dinero);
-            renderBalance(usuarioActual);
+
+        if (dinero<=0) {
+            return 'Necesitas ingresar un gasto mayor a $0';
         }
 
         const inputOptions = new Promise((resolve) => {
@@ -154,22 +155,26 @@ btnMinus.addEventListener('click', ()=>{
         title: 'Selecciona la categoría del gasto',
         input: 'select',
         inputOptions: inputOptions,
+        showCancelButton: true,
         inputValidator: (value) => {
-            if (!value) {
-                return 'Necesitas seleccionar la categoria del gasto'
-            }else{
-                
-            }
+            return new Promise((resolve) => {
+                if (usuarioActual.gastos.hasOwnProperty(value)) {
+                    usuarioActual.gastos[value] -= dinero;
+                    usuarioActual.balance -= Number(dinero);
+                    renderBalance(usuarioActual);
+                    resolve()
+                } else {
+                    resolve('Tenes que seleccionar un gasto de la lista :)')
+                }
+            })
         }
-        })        
+        })
+        
+        if (gasto) {
+            Swal.fire(`You selected: ${gasto}`)
+        }      
     })()
 });
-
-// FALTA IMPLEMENTAR A QUE CATEGORIA VA EL GASTO
-
-function categorizar(gasto){
-    // TODO
-}
 
 // PROGRAMA PRINCIPAL DONDE SE RENDERIZA LA PANTALLA CON LOS DATOS DEL usuarioActual. 
 
