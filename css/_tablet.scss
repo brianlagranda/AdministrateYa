@@ -11,22 +11,6 @@
       font-size: 2rem;
     }
 
-    #gastosUsuario{
-      height: 500px;
-      width: 500px;
-      margin: auto;
-      font-size: 1.8em;
-      gap: 5px;
-      border: 1px solid $primaryColor;
-    }
-
-    .gastos{
-      border: 1px solid $primaryColor;
-      background-color: $primaryColor;
-      border-radius: 10px;
-      padding: 3px;
-    }
-
     #balanceUsuario{
       display: flex;
       text-align: center;

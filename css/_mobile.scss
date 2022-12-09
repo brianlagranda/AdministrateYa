@@ -42,30 +42,6 @@
       margin-bottom: -2px;
     }
 
-    #gastosUsuario{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin: 0px 10px;
-      margin: auto;
-      height: 300px;
-      width: 300px;
-      background-color: $secondaryColor;
-      color: $textColor;
-      font-size: 1rem;
-      box-shadow: -5px 11px 5px 0px rgba(0,0,0,0.75);
-      border-radius: 50%;
-      gap: 2px;
-    }
-
-    .gastos{
-      border: 1px solid $primaryColor;
-      background-color: $primaryColor;
-      border-radius: 10px;
-      padding: 3px;
-    }
-
     #balanceUsuario{
       display: flex;
       text-align: center;
