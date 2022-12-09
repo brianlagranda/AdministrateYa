@@ -55,7 +55,6 @@ function elegirUsuario(){
         else{
             return main();
         }
-
     })();
 }
 
