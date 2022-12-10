@@ -77,7 +77,6 @@ function renderGastos(){
     let gastos = usuarioActual.gastos;
     const data = [];
     for (const gasto in gastos){
-        console.log(gastos[gasto])
         data.push(gastos[gasto]);
     }
     renderDonutChar(data);    

@@ -23,6 +23,6 @@ function renderDonutChar(data){
         .attr('class', 'arc')
         .style('fill', (d, i) => colorScale(i))
         .style('stroke', '#11141C')
-        .style('stroke-width', 1)
+        .style('stroke-width', 2)
 }
 
