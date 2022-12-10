@@ -9,9 +9,9 @@ class Usuario{
 
 let usuarios = [];
 
-usuarios.push(new Usuario(1, "Brian", {Luz: -100, Agua: -200, Gas: -300, Entretenimiento: -500, Salidas: -600, Mascota: -1000, Auto: -200, Comida: -700}, 24000))
-usuarios.push(new Usuario(2, "Jorge",{Luz: -1100, Agua: -2200, Gas: -4300, Entretenimiento: -5400, Salidas: -1600, Mascota: -31000, Auto: -3200, Comida: -5700}, 30000))
-usuarios.push(new Usuario(3, "Miriam",{Luz: -5500, Agua: -3200, Gas: -5300, Entretenimiento: -5200, Salidas: -2600, Mascota: -5000, Auto: -4200, Comida: -8700}, -5000))
+usuarios.push(new Usuario(1, "Brian", {Luz: 100, Agua: 200, Gas: 300, Entretenimiento: 500, Salidas: 600, Mascota: 1000, Auto: 200, Comida: 700}, 24000))
+usuarios.push(new Usuario(2, "Jorge",{Luz: 1100, Agua: 2200, Gas: 4300, Entretenimiento: 5400, Salidas: 1600, Mascota: 31000, Auto: 3200, Comida: 5700}, 30000))
+usuarios.push(new Usuario(3, "Miriam",{Luz: 5500, Agua: 3200, Gas: 5300, Entretenimiento: 5200, Salidas: 2600, Mascota: 5000, Auto: 4200, Comida: 8700}, -5000))
 
 // VARIABLES INTERFAZ USUARIO
 
@@ -75,12 +75,12 @@ function renderBienvenida(){
 
 function renderGastos(){
     let gastos = usuarioActual.gastos;
+    const data = [];
     for (const gasto in gastos){
-            let div = document.createElement("div");
-            div.className = "gastos";
-            div.innerHTML = `${gasto}: ${gastos[gasto]}`;
-            gastosUsuario.appendChild(div);
+        console.log(gastos[gasto])
+        data.push(gastos[gasto]);
     }
+    renderDonutChar(data);    
 }
 
 function renderBalance(){
@@ -175,10 +175,12 @@ btnMinus.addEventListener('click', ()=>{
     })()
 });
 
+
+
 // PROGRAMA PRINCIPAL DONDE SE RENDERIZA LA PANTALLA CON LOS DATOS DEL usuarioActual. 
 
 function main(){
     renderBienvenida(usuarioActual);
     renderGastos(usuarioActual);
-    renderBalance(usuarioActual);    
+    renderBalance(usuarioActual);
 }
