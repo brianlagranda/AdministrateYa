@@ -160,6 +160,7 @@ btnMinus.addEventListener('click', ()=>{
                 if (usuarioActual.gastos.hasOwnProperty(value)) {
                     usuarioActual.gastos[value] -= dinero;
                     usuarioActual.balance -= Number(dinero);
+                    localStorage.setItem("user", JSON.stringify(usuarios));
                     renderBalance(usuarioActual);
                     resolve()
                 } else {
