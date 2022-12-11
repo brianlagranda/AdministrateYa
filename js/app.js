@@ -161,6 +161,7 @@ btnMinus.addEventListener('click', ()=>{
         showCancelButton: true,
         inputValidator: (value) => {
             return new Promise((resolve) => {
+
                 if(dinero>0){
                     if (usuarioActual.gastos.hasOwnProperty(value)) {
                         usuarioActual.gastos[value] -= dinero;
@@ -174,6 +175,16 @@ btnMinus.addEventListener('click', ()=>{
                     }
                 }else{
                     resolve('Necesitas ingresar un importe mayor a 0')
+                    
+                if (usuarioActual.gastos.hasOwnProperty(value)) {
+                    usuarioActual.gastos[value] -= dinero;
+                    usuarioActual.balance -= Number(dinero);
+                    localStorage.setItem("user", JSON.stringify(usuarios));
+                    renderBalance(usuarioActual);
+                    resolve()
+                } else {
+                    resolve('Tenes que seleccionar un gasto de la lista :)')
+                    
                 }
             })
         }
