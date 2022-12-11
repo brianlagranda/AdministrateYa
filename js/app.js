@@ -9,9 +9,10 @@ class Usuario{
 
 let usuarios = [];
 
-usuarios.push(new Usuario(1, "Brian", {Luz: 100, Agua: 200, Gas: 300, Entretenimiento: 500, Salidas: 600, Mascota: 1000, Auto: 200, Comida: 700}, 24000))
-usuarios.push(new Usuario(2, "Jorge",{Luz: 1100, Agua: 2200, Gas: 4300, Entretenimiento: 5400, Salidas: 1600, Mascota: 31000, Auto: 3200, Comida: 5700}, 30000))
-usuarios.push(new Usuario(3, "Miriam",{Luz: 5500, Agua: 3200, Gas: 5300, Entretenimiento: 5200, Salidas: 2600, Mascota: 5000, Auto: 4200, Comida: 8700}, -5000))
+usuarios.push(new Usuario(1, "Adrian", {Luz: 1, Agua: 1, Gas: 1, Entretenimiento: 1, Salidas: 1, Mascota: 1, Auto: 1, Comida: 1}, 0))
+usuarios.push(new Usuario(2, "Brian", {Luz: 100, Agua: 200, Gas: 300, Entretenimiento: 500, Salidas: 600, Mascota: 1000, Auto: 200, Comida: 700}, 24000))
+usuarios.push(new Usuario(3, "Jorge",{Luz: 1100, Agua: 2200, Gas: 4300, Entretenimiento: 5400, Salidas: 1600, Mascota: 31000, Auto: 3200, Comida: 5700}, 30000))
+usuarios.push(new Usuario(4, "Miriam",{Luz: 5500, Agua: 3200, Gas: 5300, Entretenimiento: 5200, Salidas: 2600, Mascota: 5000, Auto: 4200, Comida: 8700}, -5000))
 
 // VARIABLES INTERFAZ USUARIO
 
@@ -32,6 +33,7 @@ function elegirUsuario(){
         const inputOptions = new Promise((resolve) => {
             setTimeout(() => {
                 resolve({
+                'Adrian': 'Adrian',
                 'Brian': 'Brian',
                 'Jorge': 'Jorge',
                 'Miriam': 'Miriam'
@@ -59,7 +61,7 @@ function elegirUsuario(){
 }
 
 function usuarioValido(nombreUsuario){
-    if (localStorage.getItem("user")){
+    if (localStorage.getItem("users")){
         usuarios = JSON.parse(localStorage.getItem("users"));
     };
     usuarioActual = usuarios.find(usuario => usuario.nombre == nombreUsuario);
@@ -83,6 +85,13 @@ function renderGastos(){
 }
 
 function renderBalance(){
+    if(usuarioActual.balance>=0){
+        balanceUsuario.classList.remove("redBalance");
+        balanceUsuario.classList.add("greenBalance");
+    }else{
+        balanceUsuario.classList.remove("greenBalance");
+        balanceUsuario.classList.add("redBalance");
+    }
     balanceUsuario.textContent = `
 
                                     Balance $${usuarioActual.balance}
@@ -130,10 +139,6 @@ btnMinus.addEventListener('click', ()=>{
             }
         });
 
-        if (dinero<=0) {
-            return 'Necesitas ingresar un gasto mayor a $0';
-        }
-
         const inputOptions = new Promise((resolve) => {
             setTimeout(() => {
                 resolve({
@@ -156,14 +161,19 @@ btnMinus.addEventListener('click', ()=>{
         showCancelButton: true,
         inputValidator: (value) => {
             return new Promise((resolve) => {
-                if (usuarioActual.gastos.hasOwnProperty(value)) {
-                    usuarioActual.gastos[value] -= dinero;
-                    usuarioActual.balance -= Number(dinero);
-                    localStorage.setItem("users", JSON.stringify(usuarios));
-                    renderBalance(usuarioActual);
-                    resolve()
-                } else {
-                    resolve('Tenes que seleccionar un gasto de la lista :)')
+                if(dinero){
+                    if (usuarioActual.gastos.hasOwnProperty(value)) {
+                        usuarioActual.gastos[value] -= dinero;
+                        usuarioActual.balance -= Number(dinero);
+                        localStorage.setItem("users", JSON.stringify(usuarios));
+                        renderGastos(usuarioActual);
+                        renderBalance(usuarioActual);
+                        resolve()
+                    } else {
+                        resolve('Tenes que seleccionar un gasto de la lista :)')
+                    }
+                }else{
+                    resolve('Necesitas ingresar un importe mayor a 0')
                 }
             })
         }

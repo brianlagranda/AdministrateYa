@@ -19,9 +19,9 @@ function renderDonutChar(data){
         .enter().append('g')
         .attr('class', 'arc')
 
-    var defs = svg.append("defs");
+    const defs = svg.append("defs");
 
-    var filter = defs.append("filter")
+    const filter = defs.append("filter")
         .attr("id", "dropshadow")
     
     filter.append("feGaussianBlur")
@@ -34,7 +34,7 @@ function renderDonutChar(data){
         .attr("dy", 2)
         .attr("result", "offsetBlur");
     
-    var feMerge = filter.append("feMerge");
+    const feMerge = filter.append("feMerge");
     
         feMerge.append("feMergeNode")
             .attr("in", "offsetBlur")
