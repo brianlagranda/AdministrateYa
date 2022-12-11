@@ -4,6 +4,7 @@ function renderDonutChar(data){
     const height = window.innerHeight - 300;
     const radius = Math.min(width, height) / 2;
     const colorScale = d3.scaleOrdinal(['#7326AB', '#2A59A9', '#E5A1D4', '#00A0B0', '#3326AB', '#1259A9', '#A5A1D4', '#BFA0B0']);
+
     const svg = div.append('svg')
         .attr('width', width)
         .attr('height', height)

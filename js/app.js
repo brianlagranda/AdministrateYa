@@ -161,7 +161,7 @@ btnMinus.addEventListener('click', ()=>{
         showCancelButton: true,
         inputValidator: (value) => {
             return new Promise((resolve) => {
-                if(dinero){
+                if(dinero>0){
                     if (usuarioActual.gastos.hasOwnProperty(value)) {
                         usuarioActual.gastos[value] -= dinero;
                         usuarioActual.balance -= Number(dinero);
