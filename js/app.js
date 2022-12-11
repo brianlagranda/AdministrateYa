@@ -60,7 +60,7 @@ function elegirUsuario(){
 
 function usuarioValido(nombreUsuario){
     if (localStorage.getItem("user")){
-        usuarios = JSON.parse(localStorage.getItem("user"));
+        usuarios = JSON.parse(localStorage.getItem("users"));
     };
     usuarioActual = usuarios.find(usuario => usuario.nombre == nombreUsuario);
     return usuarioActual;
@@ -108,7 +108,7 @@ btnPlus.addEventListener('click', ()=>{
         if (dinero>=0) {
             usuarioActual.balance += Number(dinero);
             renderBalance(usuarioActual);
-            localStorage.setItem("user", JSON.stringify(usuarios));
+            localStorage.setItem("users", JSON.stringify(usuarios));
             Swal.fire(`Balance actual: ${usuarioActual.balance}`);
         }
         
@@ -159,6 +159,7 @@ btnMinus.addEventListener('click', ()=>{
                 if (usuarioActual.gastos.hasOwnProperty(value)) {
                     usuarioActual.gastos[value] -= dinero;
                     usuarioActual.balance -= Number(dinero);
+                    localStorage.setItem("users", JSON.stringify(usuarios));
                     renderBalance(usuarioActual);
                     resolve()
                 } else {
@@ -169,7 +170,7 @@ btnMinus.addEventListener('click', ()=>{
         })
         
         if (gasto) {
-            Swal.fire(`You selected: ${gasto}`)
+            Swal.fire(`Seleccionaste el gasto: ${gasto}`)
         }      
     })()
 });
