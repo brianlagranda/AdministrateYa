@@ -11,22 +11,6 @@
       font-size: 2rem;
     }
 
-    #gastosUsuario{
-      height: 500px;
-      width: 500px;
-      margin: auto;
-      font-size: 1.8em;
-      gap: 5px;
-      border: 1px solid $primaryColor;
-    }
-
-    .gastos{
-      border: 1px solid $primaryColor;
-      background-color: $primaryColor;
-      border-radius: 10px;
-      padding: 3px;
-    }
-
     #balanceUsuario{
       display: flex;
       text-align: center;
@@ -35,11 +19,12 @@
       color: $textColor;
       font-size: 2em;
       height: 100%;
-      width: 40%;
+      width: 30%;
       border: 2px solid $secondaryColor;
       border-radius: 5px;
       box-shadow: -9px 11px 5px 0px rgba(0,0,0,0.75);
       background-color: $secondaryColor;
+      transform: translate(5px, -340px);
     }
 
     .navbar, .footer{
@@ -64,7 +49,7 @@
       cursor: pointer;
       height: 50px;
       width: 50px;
-      top: 10vh;
+      margin: -100px;
 
       & i{
         color: $secondaryColor;
@@ -94,6 +79,10 @@
       background-position: right center; /* change the direction of the change here */
       color: #fff;
       text-decoration: none;
+    }
+
+    .donutChar{
+      margin: 10px 0px;
     }
   }
 
