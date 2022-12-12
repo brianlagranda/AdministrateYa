@@ -139,6 +139,10 @@ btnMinus.addEventListener('click', ()=>{
             }
         });
 
+        if (dinero<=0) {
+            return 'Necesitas ingresar un gasto mayor a $0';
+        }
+
         const inputOptions = new Promise((resolve) => {
             setTimeout(() => {
                 resolve({
@@ -161,21 +165,6 @@ btnMinus.addEventListener('click', ()=>{
         showCancelButton: true,
         inputValidator: (value) => {
             return new Promise((resolve) => {
-
-                if(dinero>0){
-                    if (usuarioActual.gastos.hasOwnProperty(value)) {
-                        usuarioActual.gastos[value] -= dinero;
-                        usuarioActual.balance -= Number(dinero);
-                        localStorage.setItem("users", JSON.stringify(usuarios));
-                        renderGastos(usuarioActual);
-                        renderBalance(usuarioActual);
-                        resolve()
-                    } else {
-                        resolve('Tenes que seleccionar un gasto de la lista :)')
-                    }
-                }else{
-                    resolve('Necesitas ingresar un importe mayor a 0')
-                    
                 if (usuarioActual.gastos.hasOwnProperty(value)) {
                     usuarioActual.gastos[value] -= dinero;
                     usuarioActual.balance -= Number(dinero);
@@ -184,14 +173,13 @@ btnMinus.addEventListener('click', ()=>{
                     resolve()
                 } else {
                     resolve('Tenes que seleccionar un gasto de la lista :)')
-                    
                 }
             })
         }
         })
         
         if (gasto) {
-            Swal.fire(`Seleccionaste el gasto: ${gasto}`)
+            Swal.fire(`You selected: ${gasto}`)
         }      
     })()
 });
