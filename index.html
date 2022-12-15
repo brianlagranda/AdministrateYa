@@ -18,8 +18,8 @@
     <!-- SweetAlert2 -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="sweetalert2.all.min.js"></script>
-    <!-- D3JS - API -->
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- Chart.js - API -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <title>AdministrateYa</title>
 
@@ -38,10 +38,7 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">Inicio</a>
               </li>
-              <li class="nav-item2">
-                <a class="nav-link" href="#">Gastos</a>
-              </li>
-              <li class="nav-item3">
+              <li class="nav-item">
                 <a class="nav-link" href="index.html">Cambiar Usuario</a>
               </li>
             </div>
@@ -52,18 +49,16 @@
 
         <div id="bienvenidaUsuario"></div>
 
-        <div id="gastosUsuario"></div>
+        <div class="myChart-container" style="position: relative; height:40vh; width:80vw">
+          <canvas id="myChart"></canvas>
+        </div>
 
         <div id="balanceUsuario"></div>
 
-        <div id="buttons">
-          <button id="btn-minus" class="button"><i class="fa-solid fa-circle-minus"></i></button>
-          <button id="btn-plus" class="button"><i class="fa-solid fa-circle-plus"></i></button>
-        </div>
+        <button id="btn-minus"><i class="fa-solid fa-circle-minus"></i></button>
+        <button id="btn-plus"><i class="fa-solid fa-circle-plus"></i></button>
 
       </main>
-    <footer class="footer">
-    </footer>
     <script src="js/app.js"></script>
     <script src="js/donutChart.js"></script>
   </body>

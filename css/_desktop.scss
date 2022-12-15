@@ -1,15 +1,6 @@
 @media only screen 
   and (min-device-width: 992px)  {
 
-  body{
-    overflow-x: hidden;
-  }
-
-  main{
-      gap: 50px;
-      align-content: center;
-    }
-
   .nav-item, .nav-item2{
     visibility: hidden;
   }
@@ -19,25 +10,8 @@
     flex-grow: 0;
   }
 
-  #bienvenidaUsuario{
-    justify-content: center;
-    max-width: 40%;
-  }
-
-  #balanceUsuario{
-    height: 100%;
-    width: 10%;
-    font-size: 2rem;
-    font-weight: 600;
-    margin: auto;
-    transform: translate(10px, -400px);
-  }
-
-  .button{
-    margin: -150px 0px;
-  }
-
-  .donutChar{
-    margin: -20px 0px;
+  #btn-minus, #btn-plus{
+    margin-left: 20vw;
+    margin-right: 20vw;
   }
 }

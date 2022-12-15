@@ -1,30 +1,8 @@
 @media only screen 
   and (min-device-width: 500px)  {
 
-    #bienvenidaUsuario{
-      display: flex;
-      text-align: center;
-      justify-content: center;
-    }
-
     .bienvenida{
       font-size: 2rem;
-    }
-
-    #balanceUsuario{
-      display: flex;
-      text-align: center;
-      justify-content: center;
-      align-self: center;
-      color: $textColor;
-      font-size: 2em;
-      height: 100%;
-      width: 30%;
-      border: 2px solid $secondaryColor;
-      border-radius: 5px;
-      box-shadow: -9px 11px 5px 0px rgba(0,0,0,0.75);
-      background-color: $secondaryColor;
-      transform: translate(5px, -340px);
     }
 
     .navbar, .footer{
@@ -34,55 +12,6 @@
 
     .navbar-brand{
       color: $textColor;
-    }
-
-    #buttons{
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      font-size: 50px;
-    }
-
-    .button{
-      border: none;
-      background: none;
-      cursor: pointer;
-      height: 50px;
-      width: 50px;
-      margin: -100px;
-
-      & i{
-        color: $secondaryColor;
-        filter: drop-shadow(0px 0px 5px rgb(0 0 0 / 0.75));
-
-        &:hover{
-          filter: drop-shadow(0px 0px 5px rgb(255, 255, 255));
-        }
-      }
-    }
-
-    .btn-grad {
-      background-image: linear-gradient(to right, #1D2B64 0%, #F8CDDA  51%, #1D2B64  100%);
-      margin: 10px;
-      padding: 15px 45px;
-      text-align: center;
-      text-transform: uppercase;
-      transition: 0.5s;
-      background-size: 200% auto;
-      color: white;            
-      box-shadow: 0 0 20px #eee;
-      border-radius: 10px;
-      display: block;
-    }
-   
-    .btn-grad:hover {
-      background-position: right center; /* change the direction of the change here */
-      color: #fff;
-      text-decoration: none;
-    }
-
-    .donutChar{
-      margin: 10px 0px;
     }
   }
 

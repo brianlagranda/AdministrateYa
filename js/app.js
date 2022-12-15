@@ -9,7 +9,7 @@ class Usuario{
 
 let usuarios = [];
 
-usuarios.push(new Usuario(1, "Adrian", {Luz: 1, Agua: 1, Gas: 1, Entretenimiento: 1, Salidas: 1, Mascota: 1, Auto: 1, Comida: 1}, 0))
+usuarios.push(new Usuario(1, "Adrian", {Luz: 0, Agua: 0, Gas: 0, Entretenimiento: 0, Salidas: 0, Mascota: 0, Auto: 0, Comida: 0}, 0))
 usuarios.push(new Usuario(2, "Brian", {Luz: 100, Agua: 200, Gas: 300, Entretenimiento: 500, Salidas: 600, Mascota: 1000, Auto: 200, Comida: 700}, 24000))
 usuarios.push(new Usuario(3, "Jorge",{Luz: 1100, Agua: 2200, Gas: 4300, Entretenimiento: 5400, Salidas: 1600, Mascota: 31000, Auto: 3200, Comida: 5700}, 30000))
 usuarios.push(new Usuario(4, "Miriam",{Luz: 5500, Agua: 3200, Gas: 5300, Entretenimiento: 5200, Salidas: 2600, Mascota: 5000, Auto: 4200, Comida: 8700}, -5000))
@@ -77,11 +77,11 @@ function renderBienvenida(){
 
 function renderGastos(){
     let gastos = usuarioActual.gastos;
-    const data = [];
+    const userData = [];
     for (const gasto in gastos){
-        data.push(gastos[gasto]);
+        userData.push(gastos[gasto]);
     }
-    renderDonutChar(data);    
+    renderDonutChar(userData);    
 }
 
 function renderBalance(){
@@ -168,9 +168,8 @@ btnMinus.addEventListener('click', ()=>{
                 if (usuarioActual.gastos.hasOwnProperty(value)) {
                     usuarioActual.gastos[value] -= dinero;
                     usuarioActual.balance -= Number(dinero);
-                    localStorage.setItem("user", JSON.stringify(usuarios));
-                    renderBalance(usuarioActual);
-                    resolve()
+                    localStorage.setItem("users", JSON.stringify(usuarios));
+                    resolve(renderBalance(usuarioActual));
                 } else {
                     resolve('Tenes que seleccionar un gasto de la lista :)')
                 }
